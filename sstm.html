@@ -313,8 +313,12 @@ var feedback = {
     timeline: [test_stack, recall, feedback],
     repetitions: nfullDemo
   }
-
- 
+  jsPsych.init({
+  timeline: timeline,
+  on_finish: function() {
+    jsPsych.data.displayData(); // comment out if you do not want to display results at the end of task
+  }
+}); 
 
 </script>
 </html>
