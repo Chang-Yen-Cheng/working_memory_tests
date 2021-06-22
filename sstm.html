@@ -313,6 +313,22 @@ var feedback = {
     timeline: [test_stack, recall, feedback],
     repetitions: nfullDemo
   }
+
+
+  timeline = [p_details]
+  timeline.push({
+    type: 'fullscreen',
+    fullscreen_mode: true
+  });
+timeline = timeline.concat([instructions, squaresDemo, instructions2, symmetryDemo, instructions3, fullDemo, instructions4, test_procedure])
+timeline.push({
+  type: 'fullscreen',
+  fullscreen_mode: false
+});
+timeline.push(dataLog)
+timeline.push(conclusion)
+
+
   jsPsych.init({
   timeline: timeline,
   on_finish: function() {
