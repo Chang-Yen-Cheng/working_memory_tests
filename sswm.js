@@ -1,3 +1,5 @@
+var repo_site = "https://chang-yen-cheng.github.io/working_memory_tests/";
+
 //----- CUSTOMIZABLE VARIABLES -----------------------------------------
 
 minSetSize = 3 // starting length of each trial (i.e., min number of letters in a trial)
@@ -12,7 +14,7 @@ local = false // save the data file locally.
             // Incase of problems, feel free to contact me :)
 
 //----------------------------------------------------------------------
-var repo_site = "https://chang-yen-cheng.github.io/working_memory_tests/";
+
 
 var setSizes = []    // different set sizes
 for (var i = minSetSize; i<= maxSetSize; i++){
