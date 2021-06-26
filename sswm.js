@@ -68,7 +68,7 @@ show_clickable_nav: true
 var instructions2 = {
 type: 'instructions',
 pages: function(){
-  pageOne = '<div style="font-size:20px;">We will now practice SYMMETRY JUDGEMENTS.<br><br>A black and white picture will appear on the screen and you have to judge if the picture is symmetrical or asymetrical.<br>A picture is symmetrical if its left half is identical to the right half when flipped.<br>Below are examples of symmetrical and asymetrical pictures:<br> <img src= " ' + repo_site + 'img/symm_instructions.png"style="height:300px; width:400px"></img><br><br>Please ask the Research Assistant if you have not understood the difference between the symmetrical and asymetrical pictures.<br>Press "Next" to start practicing symmetry judgements.</div>'
+  pageOne = '<div style="font-size:20px;">We will now practice SYMMETRY JUDGEMENTS.<br><br>A black and white picture will appear on the screen and you have to judge if the picture is symmetrical or asymetrical.<br>A picture is symmetrical if its left half is identical to the right half when flipped.<br>Below are examples of symmetrical and asymetrical pictures:<br> <img src= " ' + repo_site + 'img/symm_instructions.png"style="height:300px; width:400px"></img><br><br>Press "Next" to start practicing symmetry judgements.</div>'
   return [pageOne]
 },
 allow_backward: false,
@@ -274,7 +274,7 @@ repetitions: nTrials
 
 var squaresDemoStack = {
 timeline: [test_stimuli, end_test_stimuli],
-repetitions: 5
+repetitions: 2
 }
 
 var squaresDemo = {
@@ -284,7 +284,7 @@ repetitions: nPracticeTrials
 
 var symmetryDemo = {
 timeline: [cog_load_demo, feedbackSymm],
-repetitions: 3
+repetitions: 2
 }
 
 var fullDemo = {
