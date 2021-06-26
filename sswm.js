@@ -3,7 +3,7 @@ var repo_site = "https://chang-yen-cheng.github.io/working_memory_tests/";
 //----- CUSTOMIZABLE VARIABLES -----------------------------------------
 
 minSetSize = 3 // starting length of each trial (i.e., min number of letters in a trial)
-maxSetSize = 5 // ending length of each trial (i.e., max number of letters in a trial)
+maxSetSize = 6 // ending length of each trial (i.e., max number of letters in a trial)
 repSet = 1 // number of times each set size should be repeated
 randomize = true // present different set sizes in random order. if false, set sizes will be presented in ascending order
 file_name = null // file name for data file. if null, a default name consisting of the participant ID and a unique number is chosen.
@@ -37,7 +37,7 @@ var nTrials = setSizes.length
 if (randomize){
 setSizes = jsPsych.randomization.sampleWithoutReplacement(setSizes, nTrials)} // shuffle through the set sizes
 
-var squaregridDemoArray = [3,4,4]
+var squaregridDemoArray = [3]
 var fullDemoArray = [3,3,4]
 var nPracticeTrials = squaregridDemoArray.length //number of practice trials for square memorization
 var nfullDemo = fullDemoArray.length
@@ -216,19 +216,20 @@ trial_duration: 1000
 var conclusion = {
 type: 'html-keyboard-response',
 stimulus: function(){
-  return '<div style="font-size:20px;">This task is over.<br><br>Thank you for your participation in this task. <br><br>Please tell the Research Assistant that you have completed the task..</div>'
+  return '<div style="font-size:20px;">The symmetry-span task is over.<br><br>Thank you for your participation. <br><br>Please move forward to the next task..</div>'
 },
 choices: jsPsych.NO_KEYS
 }
 
 var p_details = {
-type:"survey-text",
-questions: [{prompt: "Enter subject number"}],
-on_finish:function(){
-  partN = jsPsych.data.get().last(1).values()[0].partNum
-  partN = partN.replace(/['"]+/g,'')
+type:"html-keyboard-response",
+stimulus: "Welcome to the experiment. Press any key to begin."
+//questions: [{prompt: "Enter subject number"}],
+//on_finish:function(){
+//  partN = jsPsych.data.get().last(1).values()[0].partNum
+//  partN = partN.replace(/['"]+/g,'')
 //      console.log(partN[0])
-}
+//}
 }
 
 function saveData(filename, filedata){
@@ -240,12 +241,10 @@ function saveData(filename, filedata){
     });
 };
 
-var IDsub = Date.now()
+//var IDsub = Date.now()
 var dataLog = {
 type: 'html-keyboard-response',
-stimulus: " ",
-trial_duration: 100,
-on_finish: function(data) {
+stimulus: function() {
     var ssr = jsPsych.data.get().filter({trial_type:'spatial-span-recall'});
     var sjt = jsPsych.data.get().filter({trial_type:'symmetry-judgement-task'});
     //if (file_name == null){
@@ -275,7 +274,7 @@ repetitions: nTrials
 
 var squaresDemoStack = {
 timeline: [test_stimuli, end_test_stimuli],
-repetitions: 10
+repetitions: 5
 }
 
 var squaresDemo = {
@@ -285,7 +284,7 @@ repetitions: nPracticeTrials
 
 var symmetryDemo = {
 timeline: [cog_load_demo, feedbackSymm],
-repetitions: 5
+repetitions: 3
 }
 
 var fullDemo = {
