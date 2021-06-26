@@ -29,7 +29,7 @@
 
     minSetSize = 3 // starting length of each trial (i.e., min number of letters in a trial)
     maxSetSize = 5 // ending length of each trial (i.e., max number of letters in a trial)
-    repSet = 3 // number of times each set size should be repeated
+    repSet = 1 // number of times each set size should be repeated
     randomize = true // present different set sizes in random order. if false, set sizes will be presented in ascending order
     file_name = null // file name for data file. if null, a default name consisting of the participant ID and a unique number is chosen.
     local = false // save the data file locally.
@@ -61,8 +61,8 @@
   if (randomize){
     setSizes = jsPsych.randomization.sampleWithoutReplacement(setSizes, nTrials)} // shuffle through the set sizes
 
-  var squaregridDemoArray = [1,1,1]
-  var fullDemoArray = [1,1,1]
+  var squaregridDemoArray = [3]
+  var fullDemoArray = [3]
   var nPracticeTrials = squaregridDemoArray.length //number of practice trials for square memorization
   var nfullDemo = fullDemoArray.length
 
