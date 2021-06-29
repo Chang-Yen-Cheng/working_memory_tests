@@ -284,7 +284,7 @@ stimulus: "Welcome to the experiment. Press any key to begin. "
 
 var test_stack = {
 timeline: [test_stimuli, cog_load, end_test_stimuli],
-repetitions: 5
+repetitions: 10
 }
 
 var test_procedure = {
