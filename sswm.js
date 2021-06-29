@@ -265,8 +265,7 @@ function saveData(filename, filedata){
 var dataLog = {
 type: 'html-keyboard-response',
 stimulus: function() {
-    var ssr = jsPsych.data.get().filter({trial_type:'spatial-span-recall'});
-    var sjt = jsPsych.data.get().filter({trial_type:'symmetry-judgement-task'});
+   var data = jsPsych.data.get().filter([{trial_type:'spatial-span-recall'}, {trial_type:'symmetry-judgement-task'}]);
     //if (file_name == null){
       //file_name = "WM_symmetry_span_"+partN+"_"+IDsub.toString()+".csv"}
     //else{
