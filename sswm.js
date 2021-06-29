@@ -201,13 +201,13 @@ on_finish: function(){
 
 var feed = {
 type: 'instructions',
-pages: function(){
-  pageOne = "<div style='font-size:20px;'><b>Good Job! <font color='blue'>.</b><br><br>"
+pages: " ",//function(){
+  //pageOne = "<div style='font-size:20px;'><b>Good Job! <font color='blue'>.</b><br><br>"
   //if (n>nPracticeTrials){
     //pageOne+= "You made <font color='blue'>"+nSymmetryAcc+" out of "+nSquares+"</font> accurate symmetry judgement(s).<br><br></div>"
   //}
   //return [pageOne]
-},
+//},
 allow_backward: false,
 button_label_next: "Next Trial",
 show_clickable_nav: true,
