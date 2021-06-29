@@ -2,7 +2,7 @@
 
 minSetSize = 3 // starting length of each trial (i.e., min number of letters in a trial)
 maxSetSize = 5 // ending length of each trial (i.e., max number of letters in a trial)
-repSet = 3 // number of times each set size should be repeated
+repSet = 1 // number of times each set size should be repeated
 randomize = true // present different set sizes in random order. if false, set sizes will be presented in ascending order
 file_name = null // file name for data file. if null, a default name consisting of the participant ID and a unique number is chosen.
 local = false // save the data file locally.
@@ -35,8 +35,8 @@ var nTrials = setSizes.length
 if (randomize){
 setSizes = jsPsych.randomization.sampleWithoutReplacement(setSizes, nTrials)} // shuffle through the set sizes
 
-var squaregridDemoArray = [3,4,4]
-var fullDemoArray = [3,3,4]
+var squaregridDemoArray = [3]
+var fullDemoArray = [3,4]
 var nPracticeTrials = squaregridDemoArray.length //number of practice trials for square memorization
 var nfullDemo = fullDemoArray.length
 
@@ -245,22 +245,23 @@ stimulus: " ",
 trial_duration: 100,
 on_finish: function(data) {
     var data = jsPsych.data.get().filter([{trial_type:'spatial-span-recall'}, {trial_type:'symmetry-judgement-task'}]);
-    if (file_name == null){
-      file_name = "WM_symmetry_span_"+partN+"_"+IDsub.toString()+".csv"}
-    else{
-      file_name += ".csv"
-    }
-    if (local){
-      data.localSave('csv', file_name )
-    } else {
-      saveData(file_name, data.csv());
-    }
+    console.log(jsPsych.data.get().csv());
+      //if (file_name == null){
+      //file_name = "WM_symmetry_span_"+partN+"_"+IDsub.toString()+".csv"}
+    //else{
+      //file_name += ".csv"
+    //}
+    //if (local){
+      //data.localSave('csv', file_name )
+    //} else {
+      //saveData(file_name, data.csv());
+    //}
  }
 }
 
 var test_stack = {
 timeline: [test_stimuli, cog_load, end_test_stimuli],
-repetitions: 10
+repetitions: 5
 }
 
 var test_procedure = {
@@ -270,7 +271,7 @@ repetitions: nTrials
 
 var squaresDemoStack = {
 timeline: [test_stimuli, end_test_stimuli],
-repetitions: 10
+repetitions: 5
 }
 
 var squaresDemo = {
