@@ -201,13 +201,13 @@ on_finish: function(){
 
 var feed = {
 type: 'instructions',
-pages: " ", //function(){
-  //pageOne = "<div style='font-size:20px;'><b>You recalled <font color='blue'>"+nSquaresRecalled+" out of "+nSquares+"</font> squares in their correct order.</b><br><br>"
+pages: function(){
+  pageOne = "<div style='font-size:20px;'><b>Good Job! <font color='blue'>.</b><br><br>"
   //if (n>nPracticeTrials){
     //pageOne+= "You made <font color='blue'>"+nSymmetryAcc+" out of "+nSquares+"</font> accurate symmetry judgement(s).<br><br></div>"
   //}
   //return [pageOne]
-//},
+},
 allow_backward: false,
 button_label_next: "Next Trial",
 show_clickable_nav: true,
@@ -293,7 +293,7 @@ repetitions: nTrials
 
 var squaresDemoStack = {
 timeline: [test_stimuli, end_test_stimuli],
-repetitions: 2
+repetitions: 3
 }
 
 var squaresDemo = {
