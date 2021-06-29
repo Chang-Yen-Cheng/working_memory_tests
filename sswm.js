@@ -238,7 +238,8 @@ type: 'html-keyboard-response',
 stimulus: function(){
   return '<div style="font-size:20px;">The symmetry-span task is over.<br><br>Thank you for your participation. <br><br>Please move forward to the next task..</div>'
 },
-choices: jsPsych.NO_KEYS
+choices: jsPsych.NO_KEYS,
+trial_duration: 1000
 }
 
 var p_details = {
@@ -252,20 +253,20 @@ stimulus: "Welcome to the experiment. Press any key to begin. "
 //}
 }
 
-function saveData(filename, filedata){
-    $.ajax({
-          type:'post',
-          cache: false,
-          url: 'save_data.php', // this is the path to the above PHP script
-          data: {filename: filename, filedata: filedata}
-    });
-};
+//function saveData(filename, filedata){
+  //  $.ajax({
+    //      type:'post',
+      //    cache: false,
+        //  url: 'save_data.php', // this is the path to the above PHP script
+          //data: {filename: filename, filedata: filedata}
+    //});
+//};
 
 //var IDsub = Date.now()
-var dataLog = {
-type: 'html-keyboard-response',
-stimulus: function() {
-   var data = jsPsych.data.get().filter([{trial_type:'spatial-span-recall'}, {trial_type:'symmetry-judgement-task'}]);
+//var dataLog = {
+//type: 'html-keyboard-response',
+//stimulus: function() {
+   //var data = jsPsych.data.get().filter([{trial_type:'spatial-span-recall'}, {trial_type:'symmetry-judgement-task'}]);
     //if (file_name == null){
       //file_name = "WM_symmetry_span_"+partN+"_"+IDsub.toString()+".csv"}
     //else{
@@ -278,8 +279,8 @@ stimulus: function() {
     //}
     
         
- }
-}
+ //}
+//}
 
 var test_stack = {
 timeline: [test_stimuli, cog_load, end_test_stimuli],
@@ -321,6 +322,6 @@ timeline.push({
 type: 'fullscreen',
 fullscreen_mode: false
 });
-timeline.push(dataLog)
+//timeline.push(dataLog)
 timeline.push(conclusion)
 
