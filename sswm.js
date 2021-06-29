@@ -38,7 +38,7 @@ if (randomize){
 setSizes = jsPsych.randomization.sampleWithoutReplacement(setSizes, nTrials)} // shuffle through the set sizes
 
 var squaregridDemoArray = [3]
-var fullDemoArray = [3,3,4]
+var fullDemoArray = [3,4]
 var nPracticeTrials = squaregridDemoArray.length //number of practice trials for square memorization
 var nfullDemo = fullDemoArray.length
 
@@ -51,6 +51,9 @@ var selection_id = -1  //keeps track of recall items within a test stack
 
 var nSymmetryAcc = 0 //feedback
 var nSquaresRecalled = 0 //feedback
+
+var countAcc
+var countSR
 
 var instructions = {
 type: 'instructions',
@@ -80,7 +83,7 @@ var instructions3 = {
 type: 'instructions',
 pages: function(){
   pageOne = '<div style="font-size:20px;">We will now practice the two tasks together.<br><br>In the next practice set, you will first be presented with a red colored square.<br>Try and remember the position of that colored square.<br>After the colored square dissapears, you will be asked to make a symmetry judgement of a black and white picture.<br><br>Try making the symmetry judgement as soon as possible.<br>Each symmetry judgement picture will be presented for only 6 seconds.<br><br></div>'
-  pageTwo = '<div style="font-size:20px;">After the symmetry judgement, you will be shown another colored square to remember,<br>which will be followed by another symmetry judgement.<br><br>Therefore, colored square presentations and symmetry judgements will alternate.<br>After 3 to 6 squares have been presented, the recall grid will appear.<br>Use the mouse to select the presented squares in their correct order.<br><br>Do you have any questions?<br>Press "Next" to start practice rounds.<br><br></div>'
+  pageTwo = '<div style="font-size:20px;">After the symmetry judgement, you will be shown another colored square to remember,<br>which will be followed by another symmetry judgement.<br><br>Therefore, colored square presentations and symmetry judgements will alternate.<br>After 3 to 6 squares have been presented, the recall grid will appear.<br>Use the mouse to select the presented squares in their correct order.<br><br>Press "Next" to start practice rounds.<br><br></div>'
   return [pageOne, pageTwo]
 },
 allow_backward: false,
@@ -91,7 +94,7 @@ show_clickable_nav: true
 var instructions4 = {
 type: 'instructions',
 pages: function(){
-  pageOne = '<div style="font-size:20px;">We have finished with the practice trials.<br><br>We will now start with the main trials.<br>If you have not undertsood the task, please ask the Research Assistant.<br><br>Press "Next" to start the trials.<br><br></div>'
+  pageOne = '<div style="font-size:20px;">We have finished with the practice trials.<br><br>We will now start with the main trials.<br><br>Press "Next" to start the trials.<br><br></div>'
   return [pageOne]
 },
 allow_backward: false,
@@ -196,6 +199,23 @@ on_finish: function(){
 }
 }
 
+var feed = {
+type: 'instructions',
+pages: " ", //function(){
+  //pageOne = "<div style='font-size:20px;'><b>You recalled <font color='blue'>"+nSquaresRecalled+" out of "+nSquares+"</font> squares in their correct order.</b><br><br>"
+  //if (n>nPracticeTrials){
+    //pageOne+= "You made <font color='blue'>"+nSymmetryAcc+" out of "+nSquares+"</font> accurate symmetry judgement(s).<br><br></div>"
+  //}
+  //return [pageOne]
+//},
+allow_backward: false,
+button_label_next: "Next Trial",
+show_clickable_nav: true,
+on_finish: function(){
+  nSymmetryAcc = 0
+}
+}
+
 var feedbackSymm = {
 type: 'html-keyboard-response',
 stimulus: function(){
@@ -223,7 +243,7 @@ choices: jsPsych.NO_KEYS
 
 var p_details = {
 type:"html-keyboard-response",
-stimulus: "Welcome to the experiment. Press any key to begin."
+stimulus: "Welcome to the experiment. Press any key to begin. "
 //questions: [{prompt: "Enter subject number"}],
 //on_finish:function(){
 //  partN = jsPsych.data.get().last(1).values()[0].partNum
@@ -264,11 +284,11 @@ stimulus: function() {
 
 var test_stack = {
 timeline: [test_stimuli, cog_load, end_test_stimuli],
-repetitions: 10
+repetitions: 5
 }
 
 var test_procedure = {
-timeline: [test_stack, recall, feedback],
+timeline: [test_stack, recall, feed],
 repetitions: nTrials
 }
 
