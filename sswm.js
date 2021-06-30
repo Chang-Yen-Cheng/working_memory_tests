@@ -266,7 +266,7 @@ trial_duration: 1000
 var p_details = {
 type: 'html-keyboard-response',         
 stimulus: function(){
-  return '<div style="font-size:20px;"> Welcome ! <br><br>The task will begin in few seconds.</div>'
+  return '<div style="font-size:20px;">Welcome!.<br><br>The task will begin in few seconds.</div>'
 },
 choices: jsPsych.NO_KEYS,
 trial_duration: 1000
