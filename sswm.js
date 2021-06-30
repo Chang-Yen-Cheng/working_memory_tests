@@ -264,10 +264,8 @@ trial_duration: 1000
 }
 
 var p_details = {
-type: 'html-keyboard-response',         
-stimulus: " Welcome to the experiment.",
-choices: jsPsych.NO_KEYS,
-trial_duration: 1000
+type: "html-keyboard-response",         
+stimulus: "Welcome to the experiment. Press any key to begin."
 }
 
 //function saveData(filename, filedata){
