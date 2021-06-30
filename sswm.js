@@ -267,7 +267,7 @@ var p_details = {
 type: 'html-keyboard-response',         
 stimulus: " Welcome to the experiment.",
 choices: jsPsych.NO_KEYS,
-trial_duration: 1500
+trial_duration: 1000
 }
 
 //function saveData(filename, filedata){
