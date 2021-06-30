@@ -4,7 +4,7 @@ var repo_site = "https://chang-yen-cheng.github.io/working_memory_tests/";
 
 minSetSize = 3 // starting length of each trial (i.e., min number of letters in a trial)
 maxSetSize = 6 // ending length of each trial (i.e., max number of letters in a trial)
-repSet = 1 // number of times each set size should be repeated
+repSet = 3 // number of times each set size should be repeated
 randomize = true // present different set sizes in random order. if false, set sizes will be presented in ascending order
 file_name = null // file name for data file. if null, a default name consisting of the participant ID and a unique number is chosen.
 local = false // save the data file locally.
@@ -221,13 +221,13 @@ on_finish: function(){
 
 var feed = {
 type: 'instructions',
-pages: " ",//function(){
-  //pageOne = "<div style='font-size:20px;'><b>Good Job! <font color='blue'>.</b><br><br>"
-  //if (n>nPracticeTrials){
-    //pageOne+= "You made <font color='blue'>"+nSymmetryAcc+" out of "+nSquares+"</font> accurate symmetry judgement(s).<br><br></div>"
-  //}
-  //return [pageOne]
-//},
+pages: function(){
+  pageOne = "<div style='font-size:20px;'><b>You recalled <font color='blue'>"+nSquaresRecalled+" out of "+nSquares+"</font> squares in their correct order.</b><br><br>"
+  if (n>nPracticeTrials){
+    pageOne+= "You made <font color='blue'>"+nSymmetryAcc+" out of "+nSquares+"</font> accurate symmetry judgement(s).<br><br></div>"
+  }
+  return [pageOne]
+},
 allow_backward: false,
 button_label_next: "Next Trial",
 show_clickable_nav: true,
