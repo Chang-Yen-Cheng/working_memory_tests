@@ -52,8 +52,9 @@ var selection_id = -1  //keeps track of recall items within a test stack
 var nSymmetryAcc = 0 //feedback
 var nSquaresRecalled = 0 //feedback
 
-var countAcc
-var countSR
+var countN = 0
+var countSR = 0
+var countSC = 0
 
 var instructions = {
 type: 'instructions',
@@ -182,6 +183,25 @@ selection_id = -1
 }
 }
 
+var recal = {
+type: 'spatial-span-recall',
+grid_size: function(){
+return grid },
+correct_order: function(){
+return selection },
+data: function(){
+return {set_size: setSizes[n]}  },
+on_finish: function(){
+nSquares = setSizes[n]
+nSquaresRecalled = jsPsych.data.get().last(1).values()[0].accuracy;
+n+=1
+countN = countN + nSquares;
+countSR = countSR + nSquaresRecalled;
+selection = jsPsych.randomization.sampleWithoutReplacement(matrix, setSizes[n])
+selection_id = -1
+}
+}
+
 var feedback = {
 type: 'instructions',
 pages: function(){
@@ -212,6 +232,7 @@ allow_backward: false,
 button_label_next: "Next Trial",
 show_clickable_nav: true,
 on_finish: function(){
+  countSC = countSC + nSymmetryAcc;    
   nSymmetryAcc = 0
 }
 }
@@ -236,7 +257,7 @@ trial_duration: 1000
 var conclusion = {
 type: 'html-keyboard-response',
 stimulus: function(){
-  return '<div style="font-size:20px;">The symmetry-span task is over.<br><br>Thank you for your participation. <br><br>Please move forward to the next task..</div>'
+  return '<div style="font-size:20px;">The symmetry-span task is over.<br><br>Thank you for your participation. <br><br>You will be move to the next task in few seconds.</div>'
 },
 choices: jsPsych.NO_KEYS,
 trial_duration: 1000
@@ -288,7 +309,7 @@ repetitions: 10
 }
 
 var test_procedure = {
-timeline: [test_stack, recall, feed],
+timeline: [test_stack, recal, feed],
 repetitions: nTrials
 }
 
