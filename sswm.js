@@ -257,7 +257,7 @@ trial_duration: 1000
 var conclusion = {
 type: 'html-keyboard-response',
 stimulus: function(){
-  return '<div style="font-size:20px;">The symmetry-span task is over.<br><br>Thank you for your participation. <br><br>You will be move to the next task in few seconds.</div>'
+  return '<div style="font-size:20px;">The symmetry-span task is over.<br><br>Thank you for your participation. <br><br>You will be sent to the next task in few seconds.</div>'
 },
 choices: jsPsych.NO_KEYS,
 trial_duration: 1000
@@ -265,7 +265,9 @@ trial_duration: 1000
 
 var p_details = {
 type:"html-keyboard-response",
-stimulus: "Welcome to the experiment. Press any key to begin. "
+stimulus: "Welcome to the experiment. ",
+choices: jsPsych.NO_KEYS,
+trial_duration: 1500
 //questions: [{prompt: "Enter subject number"}],
 //on_finish:function(){
 //  partN = jsPsych.data.get().last(1).values()[0].partNum
