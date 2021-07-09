@@ -37,7 +37,7 @@ var nTrials = setSizes.length
 if (randomize){
 setSizes = jsPsych.randomization.sampleWithoutReplacement(setSizes, nTrials)} // shuffle through the set sizes
 
-var squaregridDemoArray = [3]
+var squaregridDemoArray = [2,4]
 var fullDemoArray = [2,4]
 var nPracticeTrials = squaregridDemoArray.length //number of practice trials for square memorization
 var nfullDemo = fullDemoArray.length
@@ -83,7 +83,7 @@ show_clickable_nav: true
 var instructions3 = {
 type: 'instructions',
 pages: function(){
-  pageOne = '<div style="font-size:20px;">We will now practice the two tasks together.<br><br>In the next practice set, you will first be presented with a red colored square.<br>Try and remember the position of that colored square.<br>After the colored square dissapears, you will be asked to make a symmetry judgement of a black and white picture.<br><br>Try making the symmetry judgement as soon as possible.<br>Each symmetry judgement picture will be presented for only 6 seconds.<br><br></div>'
+  pageOne = '<div style="font-size:20px;">We will now practice the two tasks together.<br><br>In the next practice set, you will first be presented with a red colored square.<br>Try and remember the position of that colored square.<br>After the colored square disappears, you will be asked to make a symmetry judgement of a black and white picture.<br><br>Try making the symmetry judgement as soon as possible.<br>Each symmetry judgement picture will be presented for only 6 seconds.<br><br></div>'
   pageTwo = '<div style="font-size:20px;">After the symmetry judgement, you will be shown another colored square to remember,<br>which will be followed by another symmetry judgement.<br><br>Therefore, colored square presentations and symmetry judgements will alternate.<br>After 2 to 5 squares have been presented, the recall grid will appear.<br>Use the mouse to select the presented squares in their correct order.<br><br>Press "Next" to start practice rounds.<br><br></div>'
   return [pageOne, pageTwo]
 },
