@@ -2,8 +2,8 @@ var repo_site = "https://chang-yen-cheng.github.io/working_memory_tests/";
 
 //----- CUSTOMIZABLE VARIABLES -----------------------------------------
 
-minSetSize = 3 // starting length of each trial (i.e., min number of letters in a trial)
-maxSetSize = 6 // ending length of each trial (i.e., max number of letters in a trial)
+minSetSize = 2 // starting length of each trial (i.e., min number of letters in a trial)
+maxSetSize = 5 // ending length of each trial (i.e., max number of letters in a trial)
 repSet = 3 // number of times each set size should be repeated
 randomize = true // present different set sizes in random order. if false, set sizes will be presented in ascending order
 file_name = null // file name for data file. if null, a default name consisting of the participant ID and a unique number is chosen.
@@ -38,7 +38,7 @@ if (randomize){
 setSizes = jsPsych.randomization.sampleWithoutReplacement(setSizes, nTrials)} // shuffle through the set sizes
 
 var squaregridDemoArray = [3]
-var fullDemoArray = [3,4]
+var fullDemoArray = [2,4]
 var nPracticeTrials = squaregridDemoArray.length //number of practice trials for square memorization
 var nfullDemo = fullDemoArray.length
 
@@ -60,7 +60,7 @@ var instructions = {
 type: 'instructions',
 pages: function(){
   pageOne = '<div style="font-size:20px;"><b>INSTRUCTIONS</b><br><br><br>This is the symmetry span task. <br><br>This task has two parts: <br>(1) Square memorization <br>(2) Symmetry judgement<br><br><br></div>'
-  pageTwo = '<div style="font-size:20px;">We will first practice SQUARE MEMORIZATION.<br><br>You will see a grid of squares on the screen.<br>Several squares will turn red one at a time (around 3 to 6 in a trial).<br>Try to remember which squares turned red and the order in which they turned red.<br><br>Below is an example of the grid with one square colored red. <br><br> <img src= " ' + repo_site + 'img/symmetrySpanExampleGrid.png"style="height:300px; width:400px"></img></div>'
+  pageTwo = '<div style="font-size:20px;">We will first practice SQUARE MEMORIZATION.<br><br>You will see a grid of squares on the screen.<br>Several squares will turn red one at a time (around 2 to 5 in a trial).<br>Try to remember which squares turned red and the order in which they turned red.<br><br>Below is an example of the grid with one square colored red. <br><br> <img src= " ' + repo_site + 'img/symmetrySpanExampleGrid.png"style="height:300px; width:400px"></img></div>'
   pageThree = '<div style="font-size:20px;">After this, you will be shown an empty grid.<br>Your task is to select the squares that turned red in their correct presentation order. <br><br>Use the mouse to select the appropriate squares. <br>If you make a mistake use the provided "Backspace" button to clear your last response. <br><br>Remember, it is important that you select the squares in the order that you saw them.<br> So if you forget one of the squares, guess the best you can for that one, and select the rest in their correct order.<br><br>Press "Next" for practice trials.<br><br></div>'
   return [pageOne, pageTwo, pageThree]
 },
@@ -84,7 +84,7 @@ var instructions3 = {
 type: 'instructions',
 pages: function(){
   pageOne = '<div style="font-size:20px;">We will now practice the two tasks together.<br><br>In the next practice set, you will first be presented with a red colored square.<br>Try and remember the position of that colored square.<br>After the colored square dissapears, you will be asked to make a symmetry judgement of a black and white picture.<br><br>Try making the symmetry judgement as soon as possible.<br>Each symmetry judgement picture will be presented for only 6 seconds.<br><br></div>'
-  pageTwo = '<div style="font-size:20px;">After the symmetry judgement, you will be shown another colored square to remember,<br>which will be followed by another symmetry judgement.<br><br>Therefore, colored square presentations and symmetry judgements will alternate.<br>After 3 to 6 squares have been presented, the recall grid will appear.<br>Use the mouse to select the presented squares in their correct order.<br><br>Press "Next" to start practice rounds.<br><br></div>'
+  pageTwo = '<div style="font-size:20px;">After the symmetry judgement, you will be shown another colored square to remember,<br>which will be followed by another symmetry judgement.<br><br>Therefore, colored square presentations and symmetry judgements will alternate.<br>After 2 to 5 squares have been presented, the recall grid will appear.<br>Use the mouse to select the presented squares in their correct order.<br><br>Press "Next" to start practice rounds.<br><br></div>'
   return [pageOne, pageTwo]
 },
 allow_backward: false,
@@ -221,13 +221,13 @@ on_finish: function(){
 
 var feed = {
 type: 'instructions',
-pages: function(){
-  pageOne = "<div style='font-size:20px;'><b>You recalled <font color='blue'>"+nSquaresRecalled+" out of "+nSquares+"</font> squares in their correct order.</b><br><br>"
-  if (n>nPracticeTrials){
-    pageOne+= "You made <font color='blue'>"+nSymmetryAcc+" out of "+nSquares+"</font> accurate symmetry judgement(s).<br><br></div>"
-  }
-  return [pageOne]
-},
+pages: " ", //function(){
+  //pageOne = "<div style='font-size:20px;'><b>You recalled <font color='blue'>"+nSquaresRecalled+" out of "+nSquares+"</font> squares in their correct order.</b><br><br>"
+  //if (n>nPracticeTrials){
+    //pageOne+= "You made <font color='blue'>"+nSymmetryAcc+" out of "+nSquares+"</font> accurate symmetry judgement(s).<br><br></div>"
+  //}
+  //return [pageOne]
+//},
 allow_backward: false,
 button_label_next: "Next Trial",
 show_clickable_nav: true,
