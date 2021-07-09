@@ -37,7 +37,7 @@ var nTrials = setSizes.length
 if (randomize){
 setSizes = jsPsych.randomization.sampleWithoutReplacement(setSizes, nTrials)} // shuffle through the set sizes
 
-var squaregridDemoArray = [2,4]
+var squaregridDemoArray = [3]
 var fullDemoArray = [2,4]
 var nPracticeTrials = squaregridDemoArray.length //number of practice trials for square memorization
 var nfullDemo = fullDemoArray.length
